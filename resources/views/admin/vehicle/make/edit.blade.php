@@ -16,7 +16,7 @@
         </article>
     </section>
 
-    {!! Form::model($data -> collection,['route' => ['admin.country.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal',  'id' => 'form-country' ])!!}
+    {!! Form::model($data -> collection,['route' => ['admin.country.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal' ])!!}
 
     <section class="form-group">
         <section class="col-md-12">
@@ -56,9 +56,6 @@
     </section>
     <!-- End Section Buttons -->
 
-@endsection
 
-@section('scripts')
-    <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/validate/validate-country.js')}}"></script>
+
 @endsection

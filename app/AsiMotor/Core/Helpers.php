@@ -30,4 +30,21 @@ class Helpers extends Model
         }
     }
 
+    /**
+     * Funcion que valida los campos que ingresa el usuario en los formularios. Valida si no son null o estan vacios.
+     * @param $field string Campo del formuilario a validar
+     * @return bool
+     */
+    public function validateFieldIsNotNull($field)
+    {
+        if (($field != null) && (trim($field) != "") && (! empty($field)) )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

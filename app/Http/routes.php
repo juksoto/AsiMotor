@@ -42,4 +42,9 @@ Route::group(['prefix' => 'admin'], function()
     Route::resource('country', 'AdminControllers\Contact\CountryController');
     Route::resource('city', 'AdminControllers\Contact\CityController');
 
+    Route::group(['prefix' => 'vehicle'], function()
+    {
+        Route::resource('make', 'AdminControllers\Vehicle\MakeController');
+
+    });
 });
