@@ -29,10 +29,11 @@
             data: {vehicle_make: info},
             success: function(data){
                 contentMessage(data.message_floating, data.message_alert)
+                $('#vehicle_make').val("");
+                $('#vehicle_make').focus();
             },
 
             error: function(data){
-
                 if( data.status === 422 ) {
                     //process validation errors here.
                     var errors = data.responseJSON; //this will get the errors response data.
@@ -51,6 +52,7 @@
                     contentErrors = '{!! trans('admin.message.error_create') !!}'
                     contentMessage(contentErrors, "alert-danger")
                 }
+                $('#vehicle_make').select();
         }
 
         })

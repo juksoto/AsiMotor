@@ -155,6 +155,7 @@ return [
         'unpublish_city'    => 'Despublicar ciudad',
         'update_city'       => 'Actualizar ciudad',
         'update_country'    => 'Actualizar país',
+        'update_make'    => 'Actualizar marca',
     ),
 
     'status' => array(
@@ -168,9 +169,10 @@ return [
     'vehicle' => array(
         'vehicle_make'                  => 'Marca',
         'create_vehicle_make'           => 'Crear nueva marca',
-        'create_content_vehicle_make'   => 'Escriba el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
-        'total_vehicle_make'            => 'Total de registros',
+        'edit_vehicle_make'             => 'Editar marca',
 
+        'create_content_vehicle_make'   => 'Escriba el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'edit_content_vehicle_make'     => 'Edite el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
 
     ),
 ];

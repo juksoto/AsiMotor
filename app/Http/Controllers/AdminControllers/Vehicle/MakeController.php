@@ -26,6 +26,11 @@ class MakeController extends Controller
     protected $helper;
 
     /**
+     * @var AsiMake
+     */
+    protected $make;
+
+    /**
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
@@ -48,7 +53,7 @@ class MakeController extends Controller
      */
     public function findUser($id)
     {
-        $this -> country = AsiMake::findOrFail( $id );
+        $this -> make = AsiMake::findOrFail( $id );
     }
 
 
@@ -132,7 +137,11 @@ class MakeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this -> findUser($id);
+        $this -> data -> collection = $this -> make;
+        $data = $this -> data;
+
+        return view('admin.vehicle.make.edit', compact('data'));
     }
 
     /**
@@ -144,7 +153,17 @@ class MakeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this -> findUser($id);
+        $this -> make -> fill( $request -> all() );
+        $this -> make -> save();
+
+        $message_floating = $this -> make -> vehicle_make . " " . trans('admin.message.alert_field_update');
+        $message_alert ="alert-success";
+
+        Session::flash('message_floating', $message_floating);
+        Session::flash('message_alert', $message_alert);
+
+        return redirect() -> route( 'admin.vehicle.make.index' );
     }
 
     /**
@@ -155,6 +174,24 @@ class MakeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this -> findUser($id);
+
+        $active = $this -> helper -> valueActive( $this -> make -> active );
+        $this -> make -> active = $active['active'];
+        $message = $this -> make -> vehicle_make . " " .$active['message'];
+        $this -> make -> save();
+
+        if ($this -> request -> ajax() )
+        {
+            return response() -> json([
+                'message'       =>  $message,
+                'class'         =>  $active['message_alert'],
+            ]);
+        }
+
+        Session::flash('message_floating', $message);
+        Session::flash('message_alert', $active['message_alert']);
+
+        return redirect() -> route('admin.vehicle.make.index');
     }
 }

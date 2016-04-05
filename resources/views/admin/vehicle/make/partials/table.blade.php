@@ -19,11 +19,11 @@
                 <tr data-id="{{ $collection->id  }}">
                     <td>  {!! ($key + 1) !!}</td>
                     <td>
-                        <a href="{{ route('admin.country.edit', $collection) }}">
+                        <a href="{{ route('admin.vehicle.make.edit', $collection) }}">
                             {!! $collection -> vehicle_make !!}
                         </a>
                         <small>
-                            <a href="{{ route('admin.country.edit', $collection) }}">
+                            <a href="{{ route('admin.vehicle.make.edit', $collection) }}">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 Editar
                             </a>
