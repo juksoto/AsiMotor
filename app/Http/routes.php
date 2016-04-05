@@ -45,6 +45,9 @@ Route::group(['prefix' => 'admin'], function()
     Route::group(['prefix' => 'vehicle'], function()
     {
         Route::resource('make', 'AdminControllers\Vehicle\MakeController');
+        Route::resource('class', 'AdminControllers\Vehicle\ClassController');
+
+
 
     });
 });

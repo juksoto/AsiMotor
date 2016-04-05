@@ -2,11 +2,11 @@
 
 namespace AsiMotor\Core\Repositories\Vehicle;
 
-use AsiMotor\Core\Entities\Vehicle\AsiMake;
+use AsiMotor\Core\Entities\Vehicle\AsiClass;
 use Illuminate\Database\Eloquent\Model;
 use AsiMotor\Core\Helpers;
 
-class MakeRepo extends Model
+class ClassRepo extends Model
 {
     protected $helpers;
     public function  __construct(Helpers $helpers)
@@ -16,10 +16,9 @@ class MakeRepo extends Model
 
     public function get()
     {
-        return AsiMake::orderBy('vehicle_make' ,'ASC')
+        return AsiClass::orderBy('vehicle_class' ,'ASC')
             -> where ( 'active' , true )
             -> get();
     }
-
 }
 

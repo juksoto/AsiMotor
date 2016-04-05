@@ -25,13 +25,13 @@ class AsiMake extends Model
      * @param $name string Nombre del pais que escribieron en el campo search
      * @return mixed
      */
-    public function scopeCountryName($query, $name)
+    public function scopeMakeName($query, $name)
     {
         $name = ucwords(strtolower($name));
 
         if (trim($name) != "")
         {
-            $query -> where('country',"ILIKE", "%$name%");
+            $query -> where('vehicle_make',"ILIKE", "%$name%");
         }
     }
 

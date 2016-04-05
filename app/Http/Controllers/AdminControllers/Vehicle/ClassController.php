@@ -4,15 +4,15 @@ namespace App\Http\Controllers\AdminControllers\Vehicle;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\Contact\EditMakeRequest;
-use App\Http\Requests\Vehicle\CreateMakeRequest;
-use AsiMotor\Core\Entities\Vehicle\AsiMake;
+use App\Http\Requests\Vehicle\EditClassRequest;
+use App\Http\Requests\Vehicle\CreateClassRequest;
+use AsiMotor\Core\Entities\Vehicle\AsiClass;
 use AsiMotor\Core\Helpers;
-use AsiMotor\Core\Repositories\Vehicle\MakeRepo;
+use AsiMotor\Core\Repositories\Vehicle\ClassRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class MakeController extends Controller
+class ClassController extends Controller
 {/**
  * @var Request
  */
@@ -20,28 +20,28 @@ class MakeController extends Controller
     /**
      * @var array
      */
-    protected $makeRepo;
+    protected $classRepo;
     /**
      * @var Helpers
      */
     protected $helper;
 
     /**
-     * @var AsiMake
+     * @var AsiClass
      */
-    protected $make;
+    protected $classVehicle;
 
     /**
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct(Request $request, Helpers $helper, MakeRepo $makeRepo)
+    public function __construct(Request $request, Helpers $helper, ClassRepo $classRepo)
     {
         $this -> request = $request;
 
         $this -> helper = $helper;
 
-        $this -> makeRepo = $makeRepo;
+        $this -> classRepo = $classRepo;
 
         $this -> data = new \stdClass();
 
@@ -54,7 +54,7 @@ class MakeController extends Controller
      */
     public function findUser($id)
     {
-        $this -> make = AsiMake::findOrFail( $id );
+        $this -> classVehicle = AsiClass::findOrFail( $id );
     }
 
 
@@ -65,16 +65,16 @@ class MakeController extends Controller
      */
     public function index()
     {
-        $collection = AsiMake::makeName( $this -> request -> get('search') )
+        $collection = AsiClass::className( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'vehicle_make', 'ASC' )
+            -> orderBy( 'vehicle_class', 'ASC' )
             -> paginate();
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
 
-        return view( 'admin.vehicle.make.index', compact( 'data' ) );
+        return view( 'admin.vehicle.class.index', compact( 'data' ) );
     }
 
     /**
@@ -86,7 +86,7 @@ class MakeController extends Controller
     {
         $data = $this -> data;
 
-        return view('admin.vehicle.make.create',  compact('data')); //
+        return view('admin.vehicle.class.create',  compact('data')); //
     }
 
     /**
@@ -95,11 +95,11 @@ class MakeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateMakeRequest $request)
+    public function store(CreateClassRequest $request)
     {
-        $make = AsiMake::create( $request -> all() );
+        $classVehicle = AsiClass::create( $request -> all() );
 
-        $message_floating = $make -> vehicle_make . " " .trans('admin.message.create_new_sucessful');
+        $message_floating = $classVehicle -> vehicle_class . " " .trans('admin.message.create_new_sucessful');
         $message_alert ="alert-success";
 
         if ($request -> ajax())
@@ -115,7 +115,7 @@ class MakeController extends Controller
             Session::flash('message_floating', $message_floating);
             Session::flash('message_alert', $message_alert);
 
-            return redirect() -> route( 'admin.vehicle.make.index' );
+            return redirect() -> route( 'admin.vehicle.class.index' );
         }
     }
 
@@ -139,10 +139,10 @@ class MakeController extends Controller
     public function edit($id)
     {
         $this -> findUser($id);
-        $this -> data -> collection = $this -> make;
+        $this -> data -> collection = $this -> classVehicle;
         $data = $this -> data;
 
-        return view('admin.vehicle.make.edit', compact('data'));
+        return view('admin.vehicle.class.edit', compact('data'));
     }
 
     /**
@@ -152,19 +152,19 @@ class MakeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditMakeRequest $request, $id)
+    public function update(EditClassRequest $request, $id)
     {
         $this -> findUser($id);
-        $this -> make -> fill( $request -> all() );
-        $this -> make -> save();
+        $this -> classVehicle -> fill( $request -> all() );
+        $this -> classVehicle -> save();
 
-        $message_floating = $this -> make -> vehicle_make . " " . trans('admin.message.alert_field_update');
+        $message_floating = $this -> classVehicle -> vehicle_class . " " . trans('admin.message.alert_field_update');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route( 'admin.vehicle.make.index' );
+        return redirect() -> route( 'admin.vehicle.class.index' );
     }
 
     /**
@@ -177,10 +177,10 @@ class MakeController extends Controller
     {
         $this -> findUser($id);
 
-        $active = $this -> helper -> valueActive( $this -> make -> active );
-        $this -> make -> active = $active['active'];
-        $message = $this -> make -> vehicle_make . " " .$active['message'];
-        $this -> make -> save();
+        $active = $this -> helper -> valueActive( $this -> classVehicle -> active );
+        $this -> classVehicle -> active = $active['active'];
+        $message = $this -> classVehicle -> vehicle_class . " " .$active['message'];
+        $this -> classVehicle -> save();
 
         if ($this -> request -> ajax() )
         {
@@ -193,6 +193,6 @@ class MakeController extends Controller
         Session::flash('message_floating', $message);
         Session::flash('message_alert', $active['message_alert']);
 
-        return redirect() -> route('admin.vehicle.make.index');
+        return redirect() -> route('admin.vehicle.class.index');
     }
 }

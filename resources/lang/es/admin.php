@@ -67,6 +67,7 @@ return [
 
 
      'menu'  => array(
+        'classes'           => 'clases',
         'entries'           => 'entradas',
         'home'              => 'inicio',
         'makes'             => 'marcas',
@@ -96,6 +97,9 @@ return [
         //Vehicle
         'make_is_required'                      => 'El nombre de la marca es obligatoria.',
         'make_already_exists'                   => 'Esta marca ya ha sido creada.',
+
+        'class_is_required'                     => 'El nombre de la clase es obligatoria.',
+        'class_already_exists'                  => 'Esta clase ya ha sido creada.',
 
         'email_already_exists'                  => 'El correo ya existe.',
         'email_is_required'                     => 'El correo es un campo obligatorio.',
@@ -142,10 +146,14 @@ return [
    
         'add_city'          => 'Agregar ciudad',
         'add_country'       => 'Agregar país',
+        
+        //Vehicle
         'add_make'          => 'Crear nuevo',
+
+        'add_submit'        => 'Crear nuevo',
         'create_button'     => 'Guardar',
         'create_new_button' => 'Guardar y Nuevo',
-        'back'              => 'regresar',
+        'back'              => 'Regresar',
         'filter'            => 'Filtrar',
         'filter_object'     => 'Filtro',
         'publish'           => 'Publicar',
@@ -155,7 +163,7 @@ return [
         'unpublish_city'    => 'Despublicar ciudad',
         'update_city'       => 'Actualizar ciudad',
         'update_country'    => 'Actualizar país',
-        'update_make'    => 'Actualizar marca',
+        'update'            => 'Actualizar',
     ),
 
     'status' => array(
@@ -168,11 +176,16 @@ return [
 
     'vehicle' => array(
         'vehicle_make'                  => 'Marca',
+        'vehicle_class'                 => 'Clase',
         'create_vehicle_make'           => 'Crear nueva marca',
+        'create_vehicle_class'          => 'Crear nueva clase',
         'edit_vehicle_make'             => 'Editar marca',
+        'edit_vehicle_class'            => 'Editar clase',
 
         'create_content_vehicle_make'   => 'Escriba el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'create_content_vehicle_class'  => 'Escriba el nombre de la clase. Ejemplo: Camioneta, Motocicleta, Vehículo.',
         'edit_content_vehicle_make'     => 'Edite el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'edit_content_vehicle_class'    => 'Edite el nombre de la clase. Ejemplo: Camioneta, Motocicleta, Vehículo.',
 
     ),
 ];

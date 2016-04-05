@@ -5,7 +5,7 @@
     <article class="row">
         <div class="col-md-12">
             <h1 class="title_main text-capitalize">
-                {{ trans('admin.menu.makes') }}
+                {{ trans('admin.menu.classes') }}
                 <span>
                     {{ trans('admin.menu.settings') }} {{ trans('admin.menu.vehicle') }}
                 </span>
@@ -17,7 +17,7 @@
         @include('admin.partials.message')
     </section>
 
-    {!! Form::model(Request::all(),['route' => 'admin.vehicle.make.index', 'method' => 'GET' , 'class' => 'row margin-xs-bottom no-margin-md-bottom' ])!!}
+    {!! Form::model(Request::all(),['route' => 'admin.vehicle.class.index', 'method' => 'GET' , 'class' => 'row margin-xs-bottom no-margin-md-bottom' ])!!}
         <!-- Section Filter -->
 
         <article class="col-sm-12 col-md-4 filter-section">
@@ -59,7 +59,7 @@
         <article class="col-sm-6 col-md-4 col-xs-12">
             <ul class="list-inline text-md-right text-xs-center margin-xs-top no-margin-sm-top">
                 <li class="col-md-offset-5 col-xs-offset-0">
-                    <a class="btn btn-success" href="{{ route('admin.vehicle.make.create') }}" id="create-button">
+                    <a class="btn btn-success" href="{{ route('admin.vehicle.class.create') }}" id="create-button">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         {{ trans('admin.submit.add_submit') }}
                     </a>
@@ -73,7 +73,7 @@
 
 
     <section class="small-12 large-12 medium-12 columns">
-         @include('admin.vehicle.make.partials.table')
+         @include('admin.vehicle.class.partials.table')
     </section>
     <section class="col-md-12 text-center">
         <div class="pagination text-center">
@@ -87,7 +87,7 @@
     </section>
 
     <section class="">
-        {!! Form::open(['route' => ['admin.vehicle.make.destroy', ':VALUE_ID'], 'method' => 'DELETE', 'class' => '' , 'id' => 'form-active'])!!}
+        {!! Form::open(['route' => ['admin.vehicle.class.destroy', ':VALUE_ID'], 'method' => 'DELETE', 'class' => '' , 'id' => 'form-active'])!!}
         {!! Form::close()!!}
     </section>
 

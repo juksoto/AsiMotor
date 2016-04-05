@@ -4,7 +4,7 @@ namespace App\Http\Requests\Vehicle;
 
 use App\Http\Requests\Request;
 
-class CreateMakeRequest extends Request
+class CreateClassRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,15 @@ class CreateMakeRequest extends Request
     public function rules()
     {
         return [
-            'vehicle_make' => 'required|unique:asi_vehicle_makes,vehicle_make',
+            'vehicle_class' => 'required|unique:asi_vehicle_classes,vehicle_class',
         ];
     }
 
     public function messages()
     {
         return [
-            'required'         => trans('admin.message.make_is_required'),
-            'unique'           => trans('admin.message.make_already_exists'),
+            'required'         => trans('admin.message.class_is_required'),
+            'unique'           => trans('admin.message.class_already_exists'),
         ];
     }
 
@@ -46,7 +46,7 @@ class CreateMakeRequest extends Request
     {
         $input = parent::all();
 
-        $input['vehicle_make'] = ucwords( strtolower( $input[ 'vehicle_make' ] ) );
+        $input['vehicle_class'] = ucwords( strtolower( $input[ 'vehicle_class' ] ) );
 
         $this -> replace( $input );
 
