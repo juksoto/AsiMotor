@@ -13,7 +13,7 @@
         </article>
     </section>
 
-    {!! Form::open(['route' => 'admin.country.store', 'method' => 'POST', 'class' => 'form-horizontal' , 'id' => 'form-country'])!!}
+    {!! Form::open(['route' => 'admin.country.store', 'method' => 'POST', 'class' => 'form-horizontal' , 'id' => 'form'])!!}
         <section class="form-group">
             <section class="col-md-12">
                 @include('admin.partials.message')
@@ -33,5 +33,6 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/validate/validate-country.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/validate/validate.js')}}"></script>
+    @include('admin.contact.country.partials.scripts')
 @endsection

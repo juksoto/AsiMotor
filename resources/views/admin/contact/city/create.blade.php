@@ -13,7 +13,7 @@
         </article>
     </section>
 
-    {!! Form::open(['route' => 'admin.city.store', 'method' => 'POST', 'class' => 'form-horizontal' , 'id' => 'form-city'])!!}
+    {!! Form::open(['route' => 'admin.city.store', 'method' => 'POST', 'class' => 'form-horizontal' , 'id' => 'form'])!!}
         <section class="form-group">
             <section class="col-md-12">
                 @include('admin.partials.message')
@@ -31,7 +31,9 @@
         {!! Form::close()!!}
 @endsection
 
+
 @section('scripts')
     <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/validate/validate-city.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/validate/validate.js')}}"></script>
+    @include('admin.contact.city.partials.scripts')
 @endsection

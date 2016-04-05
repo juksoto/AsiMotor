@@ -1,15 +1,14 @@
 $( "#send-form" ).click(function() {
-   $('#form-make').validate({
+   $('#form').validate({
    	rules:
    	{
-   		 country : { required: true },
-       iso : { required: true },
+   		 name: { required: true },
    	},
    	messages:
    	{
-   		 city: { required: 'El nombre de la ciudad es obligatoria' },
-       country_id: { required: 'Seleccione un país' },
+   		 name: { required: 'El nombre de la ciudad es obligatoria' },
    	},
+
    	highlight: function(element) {
         var id_attr = "#" + $( element ).attr("id") + "1";
          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

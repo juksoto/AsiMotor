@@ -16,7 +16,7 @@
         </article>
     </section>
 
-    {!! Form::model($data -> collection,['route' => ['admin.city.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal', 'id' => 'form-city' ])!!}
+    {!! Form::model($data -> collection,['route' => ['admin.city.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal', 'id' => 'form' ])!!}
 
     <section class="form-group">
         <section class="col-md-12">
@@ -60,5 +60,7 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/validate/validate-city.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/validate/validate.js')}}"></script>
+    @include('admin.contact.city.partials.scripts')
+
 @endsection

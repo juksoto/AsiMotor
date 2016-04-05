@@ -59,7 +59,7 @@
         <article class="col-sm-6 col-md-4 col-xs-12">
             <ul class="list-inline text-md-right text-xs-center margin-xs-top no-margin-sm-top">
                 <li class="col-md-offset-5 col-xs-offset-0">
-                    <a class="btn btn-success" href="{{ route('admin.vehicle.make.create') }}">
+                    <a class="btn btn-success" href="{{ route('admin.vehicle.make.create') }}" id="create-button">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         {{ trans('admin.submit.add_make') }}
                     </a>

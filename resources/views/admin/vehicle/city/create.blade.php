@@ -33,5 +33,21 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/validate/validate-city.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/validate/validate.js')}}"></script>
+    <script>
+        $( "#send-form" ).click(function() {
+            $( "#city" ).rules( "add" , {
+                required: true,
+                messages: {
+                    required: '{!! trans('admin.message.city_is_required') !!}'
+                },
+            });
+            $( "#country_id" ).rules( "add" , {
+                required: true,
+                messages: {
+                    required: '{!! trans('admin.message.country_is_selected') !!}'
+                },
+            })
+        });
+    </script>
 @endsection

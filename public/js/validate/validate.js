@@ -1,15 +1,5 @@
 $( "#send-form" ).click(function() {
-   $('#form-city').validate({
-   	rules:
-   	{
-   		 city : { required: true },
-       country_id : { required: true },
-   	},
-   	messages:
-   	{
-   		 city: { required: 'El nombre de la ciudad es obligatoria' },
-       country_id: { required: 'Seleccione un país' },
-   	},
+   $('#form').validate({
    	highlight: function(element) {
         var id_attr = "#" + $( element ).attr("id") + "1";
          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
@@ -32,3 +22,4 @@ $( "#send-form" ).click(function() {
      }
    });
  });
+
