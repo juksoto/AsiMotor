@@ -4,10 +4,12 @@ namespace App\Http\Controllers\AdminControllers\Vehicle;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Http\Requests\Vehicle\CreateMakeRequest;
 use AsiMotor\Core\Entities\Vehicle\AsiMake;
 use AsiMotor\Core\Helpers;
-use Illuminate\Http\Request;
 use AsiMotor\Core\Repositories\Vehicle\MakeRepo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MakeController extends Controller
 {/**
@@ -87,11 +89,28 @@ class MakeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMakeRequest $request)
     {
-        $this -> makeRepo -> createMakes($request -> all());
+        $make = AsiMake::create( $request -> all() );
 
-        return redirect() -> route( 'admin.vehicle.make.index' );
+        $message_floating = $make -> vehicle_make . " " .trans('admin.message.create_new_sucessful');
+        $message_alert ="alert-success";
+
+        if ($request -> ajax())
+        {
+            return response() -> json([
+                "message_floating" => $message_floating ,
+                "message_alert" => $message_alert ,
+
+            ]);
+        }
+        else
+        {
+            Session::flash('message_floating', $message_floating);
+            Session::flash('message_alert', $message_alert);
+
+            return redirect() -> route( 'admin.vehicle.make.index' );
+        }
     }
 
     /**

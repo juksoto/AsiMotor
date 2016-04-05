@@ -21,40 +21,6 @@ class MakeRepo extends Model
             -> get();
     }
 
-    public function createMakes($request)
-    {
-        \DB::transaction(function () use ($request)
-        {
-            try {
-                $contentMake = $this -> resolveContentMake($request);
-
-                foreach ($contentMake as $cMake)
-                {
-                    $validateNull = $this -> helpers -> validateFieldIsNotNull($cMake);
-
-                    if ($validateNull == true)
-                    {
-                        $makeVehicle                    = new AsiMake();
-                        $makeVehicle -> vehicle_make    = $cMake;
-                        $makeVehicle -> save();
-                        $message_alert ="alert-success";
-                        $message_floating = trans('admin.message.create_new_make_sucessful');
-                    }
-                }
-            }
-            catch(\Exception $e)
-            {
-                \DB::rollback();
-                $message_alert ="alert-danger";
-                $message_floating = trans('admin.message.error_create_make');
-                throw $e;
-            }
-
-            \Session::flash('message_floating', $message_floating);
-            \Session::flash('message_alert', $message_alert);
-
-        });
-    }
     /**
      * Valida si en el request cuantas variables hay  con el nombre make_n existen.
      * Guarda en una array los valores y los devuelve a la transaccion.

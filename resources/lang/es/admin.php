@@ -82,13 +82,21 @@ return [
 
      'message'  => array(
         'already_exists'                        => 'ya existe.',
+
+        //Cities
         'city_already_exists'                   => 'Esta ciudad ya existe.',
         'city_is_required'                      => 'El nombre de la ciudad es obligatoria.',
+        
+        //Countries
         'country_already_exists'                => 'El nombre del país ya existe. Recomendamos mirar en los paises inactivos',
         'country_is_required'                   => 'El país es un campo obligatorio.',
         'country_iso_is_required'               => 'El ISO del país es un campo obligatorio.',
         'country_is_selected'                   => 'Seleccione un país.',
+        
+        //Vehicle
         'make_is_required'                      => 'El nombre de la marca es obligatoria.',
+        'make_already_exists'                   => 'Esta marca ya ha sido creada.',
+
         'email_already_exists'                  => 'El correo ya existe.',
         'email_is_required'                     => 'El correo es un campo obligatorio.',
         'email_public'                          => 'Este correo es el que visualizarán los usuarios.',
@@ -107,12 +115,14 @@ return [
         //Errors
         'error_city_country'                    => 'Recuerde crear o activar primero un país para luego crear una ciudad.',
         'error_create_make'                     => 'Ha ocurrido un error creando las marcas.',
+        'error_create'                          => 'Ha ocurrido un error.',
 
         //alerts
+        
         'alert_field_update'                    => 'se actualizo.',
         'create_new_country'                    => 'Se ha creado un nuevo país.',
         'create_new_city'                       => 'Se ha creado una nueva ciudad para ',
-        'create_new_make_sucessful'             => 'Las marcas han sido creadas satisfactoriamente.',
+        'create_new_sucessful'                  => 'ha sido creado satisfactoriamente.',
 
 
 

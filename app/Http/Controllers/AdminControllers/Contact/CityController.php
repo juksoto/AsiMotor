@@ -4,8 +4,8 @@ namespace App\Http\Controllers\AdminControllers\Contact;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\CreateCityRequest;
-use App\Http\Requests\EditCityRequest;
+use App\Http\Requests\Contact\CreateCityRequest;
+use App\Http\Requests\Contact\EditCityRequest;
 use AsiMotor\Core\Entities\Contact\AsiCity;
 use AsiMotor\Core\Entities\Contact\AsiCountry;
 use AsiMotor\Core\Helpers;

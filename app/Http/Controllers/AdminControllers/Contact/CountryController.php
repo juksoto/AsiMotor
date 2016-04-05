@@ -4,8 +4,8 @@ namespace App\Http\Controllers\AdminControllers\Contact;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\CreateCountryRequest;
-use App\Http\Requests\EditCountryRequest;
+use App\Http\Requests\Contact\CreateCountryRequest;
+use App\Http\Requests\Contact\EditCountryRequest;
 use AsiMotor\Core\Entities\Contact\AsiCountry;
 use AsiMotor\Core\Helpers;
 use AsiMotor\Core\Repositories\Contact\CountryRepo;

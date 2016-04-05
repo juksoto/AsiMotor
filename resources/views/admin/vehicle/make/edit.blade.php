@@ -56,6 +56,11 @@
     </section>
     <!-- End Section Buttons -->
 
+@endsection
 
+@section('scripts')
+    <script type="text/javascript" src="{{URL::asset('js/validate/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/validate/validate.js')}}"></script>
+    @include('admin.contact.city.partials.scripts')
 
 @endsection
