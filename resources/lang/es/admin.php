@@ -17,11 +17,11 @@ return [
         'email'                     => 'Correo',
         'email_additional'          => 'Correo Adicional',
         'enter_a_valid_email'       => 'Ingrese un correo válido',
+        'headquarters'              => 'Sede',
+        'location'                  => 'Ubicación',
         'mail'                      => 'correo',
         'phone'                     => 'teléfono',
         'phones'                    => 'teléfonos',
-        'headquarters'              => 'Sede',
-        'location'                  => 'Ubicación',
 
         //Validaciones
         'no_address'                => 'No hay una direccion, debe agregar una.',
@@ -45,9 +45,9 @@ return [
         
     ),
     'city'  => array(
-        'content_header'         => 'Ingrese el nombre de la ciudad y escoja el país.',
-        'city'                   => 'ciudad',
         'cities'                 => 'ciudades',
+        'city'                   => 'ciudad',
+        'content_header'         => 'Ingrese el nombre de la ciudad y escoja el país.',
         'name_city'              => 'Nombre de la ciudad',
         'new_city'               => 'Nueva ciudad',
         'total_cities'           => 'Total de ciudades',
@@ -71,6 +71,7 @@ return [
         'entries'           => 'entradas',
         'home'              => 'inicio',
         'makes'             => 'marcas',
+        'lines'             => 'lineas',
         'page'              => 'páginas',
         'regional'          => 'regional',
         'settings'          => 'configuración',
@@ -91,15 +92,18 @@ return [
         //Countries
         'country_already_exists'                => 'El nombre del país ya existe. Recomendamos mirar en los paises inactivos',
         'country_is_required'                   => 'El país es un campo obligatorio.',
-        'country_iso_is_required'               => 'El ISO del país es un campo obligatorio.',
         'country_is_selected'                   => 'Seleccione un país.',
+        'country_iso_is_required'               => 'El ISO del país es un campo obligatorio.',
         
         //Vehicle
-        'make_is_required'                      => 'El nombre de la marca es obligatoria.',
         'make_already_exists'                   => 'Esta marca ya ha sido creada.',
+        'make_is_required'                      => 'El nombre de la marca es obligatoria.',
 
-        'class_is_required'                     => 'El nombre de la clase es obligatoria.',
+        'line_already_exists'                   => 'Esta linea ya ha sido creada.',
+        'line_is_required'                      => 'El nombre de la linea es obligatoria.',
+
         'class_already_exists'                  => 'Esta clase ya ha sido creada.',
+        'class_is_required'                     => 'El nombre de la clase es obligatoria.',
 
         'email_already_exists'                  => 'El correo ya existe.',
         'email_is_required'                     => 'El correo es un campo obligatorio.',
@@ -118,14 +122,14 @@ return [
 
         //Errors
         'error_city_country'                    => 'Recuerde crear o activar primero un país para luego crear una ciudad.',
-        'error_create_make'                     => 'Ha ocurrido un error creando las marcas.',
         'error_create'                          => 'Ha ocurrido un error.',
+        'error_create_make'                     => 'Ha ocurrido un error creando las marcas.',
 
         //alerts
         
         'alert_field_update'                    => 'se actualizo.',
-        'create_new_country'                    => 'Se ha creado un nuevo país.',
         'create_new_city'                       => 'Se ha creado una nueva ciudad para ',
+        'create_new_country'                    => 'Se ha creado un nuevo país.',
         'create_new_sucessful'                  => 'ha sido creado satisfactoriamente.',
 
 
@@ -146,14 +150,14 @@ return [
    
         'add_city'          => 'Agregar ciudad',
         'add_country'       => 'Agregar país',
+        'add_submit'        => 'Crear nuevo',
         
         //Vehicle
         'add_make'          => 'Crear nuevo',
-
-        'add_submit'        => 'Crear nuevo',
+        
+        'back'              => 'Regresar',
         'create_button'     => 'Guardar',
         'create_new_button' => 'Guardar y Nuevo',
-        'back'              => 'Regresar',
         'filter'            => 'Filtrar',
         'filter_object'     => 'Filtro',
         'publish'           => 'Publicar',
@@ -161,9 +165,9 @@ return [
         'select'            => 'Seleccionar',
         'unpublish'         => 'Despublicar',
         'unpublish_city'    => 'Despublicar ciudad',
+        'update'            => 'Actualizar',
         'update_city'       => 'Actualizar ciudad',
         'update_country'    => 'Actualizar país',
-        'update'            => 'Actualizar',
     ),
 
     'status' => array(
@@ -175,17 +179,25 @@ return [
     ),
 
     'vehicle' => array(
-        'vehicle_make'                  => 'Marca',
-        'vehicle_class'                 => 'Clase',
-        'create_vehicle_make'           => 'Crear nueva marca',
         'create_vehicle_class'          => 'Crear nueva clase',
-        'edit_vehicle_make'             => 'Editar marca',
-        'edit_vehicle_class'            => 'Editar clase',
+        'create_vehicle_line'          => 'Crear nueva linea',
+        'create_vehicle_make'           => 'Crear nueva marca',
 
-        'create_content_vehicle_make'   => 'Escriba el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'edit_vehicle_class'            => 'Editar clase',
+        'edit_vehicle_line'             => 'Editar linea',
+        'edit_vehicle_make'             => 'Editar marca',
+
+        'vehicle_class'                 => 'Clase',
+        'vehicle_line'                  => 'Linea',
+        'vehicle_make'                  => 'Marca',
+
         'create_content_vehicle_class'  => 'Escriba el nombre de la clase. Ejemplo: Camioneta, Motocicleta, Vehículo.',
-        'edit_content_vehicle_make'     => 'Edite el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'create_content_vehicle_make'   => 'Escriba el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'create_content_vehicle_line'   => 'Escriba el nombre de la linea del vehículo. Ejemplo: Picanto, Accent, CBF.',
+
         'edit_content_vehicle_class'    => 'Edite el nombre de la clase. Ejemplo: Camioneta, Motocicleta, Vehículo.',
+        'edit_content_vehicle_make'     => 'Edite el nombre de la marca del vehículo. Ejemplo: Hyundai, Mazda, Toyota.',
+        'edit_content_vehicle_line'     => 'Edite el nombre de la linea del vehículo. Ejemplo: Picanto, Accent, CBF.',
 
     ),
 ];

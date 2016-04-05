@@ -30,9 +30,6 @@ Route::group(['middleware' => ['web']], function () {
 
 });
 
-
-
-
 /**
  * Groups AdminControllers Controllers
  */
@@ -46,6 +43,7 @@ Route::group(['prefix' => 'admin'], function()
     {
         Route::resource('make', 'AdminControllers\Vehicle\MakeController');
         Route::resource('class', 'AdminControllers\Vehicle\ClassController');
+        Route::resource('line', 'AdminControllers\Vehicle\LineController');
 
 
 

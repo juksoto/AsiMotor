@@ -48,7 +48,7 @@
                     </button>
                 </li>
                 <li class="text-left">
-                    <a class="btn btn-danger" href="{{ route('admin.country.index') }}">
+                    <a class="btn btn-danger" href="{{ route('admin.vehicle.class.index') }}">
                         <span class=" glyphicon glyphicon-remove" aria-hidden="true"></span>
                         {{ trans('admin.submit.filter_object') }}
                     </a>

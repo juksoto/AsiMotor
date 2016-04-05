@@ -4,11 +4,11 @@ namespace App\Http\Controllers\AdminControllers\Vehicle;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\Vehicle\EditClassRequest;
-use App\Http\Requests\Vehicle\CreateClassRequest;
-use AsiMotor\Core\Entities\Vehicle\AsiClass;
+use App\Http\Requests\Vehicle\EditLineRequest;
+use App\Http\Requests\Vehicle\CreateLineRequest;
+use AsiMotor\Core\Entities\Vehicle\AsiLine;
 use AsiMotor\Core\Helpers;
-use AsiMotor\Core\Repositories\Vehicle\ClassRepo;
+use AsiMotor\Core\Repositories\Vehicle\LineRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -20,28 +20,28 @@ class LineController extends Controller
     /**
      * @var array
      */
-    protected $classRepo;
+    protected $lineRepo;
     /**
      * @var Helpers
      */
     protected $helper;
 
     /**
-     * @var AsiClass
+     * @var AsiLine
      */
-    protected $classVehicle;
+    protected $lineVehicle;
 
     /**
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct(Request $request, Helpers $helper, ClassRepo $classRepo)
+    public function __construct(Request $request, Helpers $helper, LineRepo $lineRepo)
     {
         $this -> request = $request;
 
         $this -> helper = $helper;
 
-        $this -> classRepo = $classRepo;
+        $this -> lineRepo = $lineRepo;
 
         $this -> data = new \stdClass();
 
@@ -54,7 +54,7 @@ class LineController extends Controller
      */
     public function findUser($id)
     {
-        $this -> classVehicle = AsiClass::findOrFail( $id );
+        $this -> lineVehicle = AsiLine::findOrFail( $id );
     }
 
 
@@ -65,16 +65,16 @@ class LineController extends Controller
      */
     public function index()
     {
-        $collection = AsiClass::className( $this -> request -> get('search') )
+        $collection = AsiLine::lineName( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'vehicle_class', 'ASC' )
+            -> orderBy( 'vehicle_line', 'ASC' )
             -> paginate();
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
 
-        return view( 'admin.vehicle.class.index', compact( 'data' ) );
+        return view( 'admin.vehicle.line.index', compact( 'data' ) );
     }
 
     /**
@@ -86,7 +86,7 @@ class LineController extends Controller
     {
         $data = $this -> data;
 
-        return view('admin.vehicle.class.create',  compact('data')); //
+        return view('admin.vehicle.line.create',  compact('data')); //
     }
 
     /**
@@ -95,11 +95,11 @@ class LineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateClassRequest $request)
+    public function store(CreateLineRequest $request)
     {
-        $classVehicle = AsiClass::create( $request -> all() );
+        $lineVehicle = AsiLine::create( $request -> all() );
 
-        $message_floating = $classVehicle -> vehicle_class . " " .trans('admin.message.create_new_sucessful');
+        $message_floating = $lineVehicle -> vehicle_line . " " .trans('admin.message.create_new_sucessful');
         $message_alert ="alert-success";
 
         if ($request -> ajax())
@@ -115,7 +115,7 @@ class LineController extends Controller
             Session::flash('message_floating', $message_floating);
             Session::flash('message_alert', $message_alert);
 
-            return redirect() -> route( 'admin.vehicle.class.index' );
+            return redirect() -> route( 'admin.vehicle.line.index' );
         }
     }
 
@@ -139,10 +139,10 @@ class LineController extends Controller
     public function edit($id)
     {
         $this -> findUser($id);
-        $this -> data -> collection = $this -> classVehicle;
+        $this -> data -> collection = $this -> lineVehicle;
         $data = $this -> data;
 
-        return view('admin.vehicle.class.edit', compact('data'));
+        return view('admin.vehicle.line.edit', compact('data'));
     }
 
     /**
@@ -152,19 +152,19 @@ class LineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditClassRequest $request, $id)
+    public function update(EditLineRequest $request, $id)
     {
         $this -> findUser($id);
-        $this -> classVehicle -> fill( $request -> all() );
-        $this -> classVehicle -> save();
+        $this -> lineVehicle -> fill( $request -> all() );
+        $this -> lineVehicle -> save();
 
-        $message_floating = $this -> classVehicle -> vehicle_class . " " . trans('admin.message.alert_field_update');
+        $message_floating = $this -> lineVehicle -> vehicle_line . " " . trans('admin.message.alert_field_update');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route( 'admin.vehicle.class.index' );
+        return redirect() -> route( 'admin.vehicle.line.index' );
     }
 
     /**
@@ -177,10 +177,10 @@ class LineController extends Controller
     {
         $this -> findUser($id);
 
-        $active = $this -> helper -> valueActive( $this -> classVehicle -> active );
-        $this -> classVehicle -> active = $active['active'];
-        $message = $this -> classVehicle -> vehicle_class . " " .$active['message'];
-        $this -> classVehicle -> save();
+        $active = $this -> helper -> valueActive( $this -> lineVehicle -> active );
+        $this -> lineVehicle -> active = $active['active'];
+        $message = $this -> lineVehicle -> vehicle_line . " " .$active['message'];
+        $this -> lineVehicle -> save();
 
         if ($this -> request -> ajax() )
         {
@@ -193,6 +193,6 @@ class LineController extends Controller
         Session::flash('message_floating', $message);
         Session::flash('message_alert', $active['message_alert']);
 
-        return redirect() -> route('admin.vehicle.class.index');
+        return redirect() -> route('admin.vehicle.line.index');
     }
 }
